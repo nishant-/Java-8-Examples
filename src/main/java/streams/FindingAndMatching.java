@@ -2,6 +2,8 @@ package streams;
 
 import javax.swing.text.html.Option;
 import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class FindingAndMatching {
@@ -25,7 +27,7 @@ public class FindingAndMatching {
         boolean result = streamOfIntegers.allMatch(x -> x % 2 == 0);
         System.out.println(result);
         //the below example returns false.
-        //although it is an infinite stream but since a match failed, further processing terminated
+        //although it is an infinite stream but since a match failed, further processing terminates
         result = Stream.iterate(1,x -> x + 1).allMatch(x -> x % 5 == 0);
         System.out.println(result);
     }
@@ -39,7 +41,15 @@ public class FindingAndMatching {
         System.out.println(result);
     }
 
-   //The findAny method returns an arbitrary element of the current stream.
+    //These three operations—anyMatch, allMatch, and noneMatch—make use of what we
+    //call short-circuiting, a stream version of the familiar Java short-circuiting && and ||
+    //operators.
+
+
+   //The findAny method returns an Optional describing an arbitrary element of the current stream.
+    //the below example also demonstrates how to use stream-builder
+    //In a non-parallel operation, it will most likely return the first element
+   // in the Stream but there is no guarantee for this.
     public static void findAnyExample() {
         Stream.Builder<String> stringStreamBuilder = Stream.builder();
         stringStreamBuilder.add("Quest");//returns this
@@ -49,9 +59,22 @@ public class FindingAndMatching {
         Stream<String> streamOfString = stringStreamBuilder.build();//stream is built
         Optional<String> value = streamOfString.findAny(); //returns an arbitrary item if found
         System.out.println(value.get());
-
-
     }
+
+    //findFirst method returns an Optional describing the first element of the stream having an encounter order
+    //the below example uses an IntStream
+    public static void findFirstExample() {
+        IntStream s = IntStream.iterate(1, x -> (x << 1));
+        OptionalInt op = s.findFirst(); //returns the first element of the stream i.e. 1
+        //not that the stream is infinite but the findFirst method returns immediately
+        // after it finds the first element of the stream
+        System.out.println(op.getAsInt());
+    }
+
+    //When to use findFirst or findAny?
+    //Finding the first element is more constraining in parallel. If you don’t care about
+    //which element is returned, use findAny because it’s less constraining when using
+    //parallel streams.
 
 
     public static void main(String[] args) {
@@ -60,6 +83,7 @@ public class FindingAndMatching {
         allMatchExample();
         noneMatchExample();
         findAnyExample();
+        findFirstExample();
     }
 
 }
