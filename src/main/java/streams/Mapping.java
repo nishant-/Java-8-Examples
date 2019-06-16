@@ -16,13 +16,19 @@ public class Mapping {
         //map method doubles each item in the list.
         List<Integer> list = intStream.boxed().map(x->x*2).collect(Collectors.toList());
         System.out.println(Arrays.toString(list.toArray())); //will print 2,4,6...100
+        //example 2
+        Stream<String> streamOfStrings = Stream.of("zxcvb","qazzz","abcdef");
+        //the map method function takes a string input and returns its length
+        //the result is collected in a list
+        List<Integer> wordsLength = streamOfStrings.map(x -> x.length()).collect(Collectors.toList());
+
     }
 
     //flatmap flattens each generated stream into a single stream
     public static void flatMapMethod() {
 
         Stream<Integer[]> streams = Stream.of(new Integer[]{1,3,5},new Integer[]{2,4,6}, new Integer[]{8,10,12});
-        Stream<Integer> flatStream = streams.flatMap(Arrays::stream);
+        Stream<Integer> flatStream = streams.flatMap(Arrays::stream); //using method reference
         System.out.print(Arrays.toString(flatStream.toArray())); //produces 1,2,5,2,4,6,8,10,12
     }
 
