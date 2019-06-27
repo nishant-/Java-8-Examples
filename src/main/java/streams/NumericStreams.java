@@ -53,23 +53,7 @@ public class NumericStreams {
         OptionalDouble optionalDouble = Stream.empty().mapToDouble(x -> 1).max();
         double maxDouble = optionalDouble.orElse(Double.MAX_VALUE);
         System.out.println(maxDouble); //prints max value of double, 1.7976931348623157E308
-
-        //Generating pythagorean triples (a, b, c such that a*a + b*b = c*c)
-
-
     }
-
-    public static void generatePythagoreanTriples() {
-
-        //TO DO
-
-        /*IntStream intStream = IntStream.rangeClosed(1,100);
-        intStream.boxed().flatMap(a ->
-                            IntStream.rangeClosed(a,100).
-                                    filter(b -> Math.sqrt(a*a + b*b )% 1 == 0)
-                                    .mapToObj(b -> new int[] {a , b, (int)Math.sqrt(a*a + b*b)}));*/
-    }
-
 
     public static void main(String[] args) {
         primitiveStreamExamples();
