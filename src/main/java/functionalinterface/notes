@@ -1,0 +1,33 @@
+Functional Interface
+==========================
+   A functional interface is an interface that specifies only one abstract method.
+
+   The signature of the abstract method of the functional interface describes the signature of the lambda expression.
+
+   And the abstract method is called function descriptor.
+
+   A lambda expression can be assigned to a variable or passed to a method expecting a functional interface as argument,
+   provided the lambda expression has the same signature as the abstract method of the functional interface.
+
+   Annotation @FunctionalInterface implies that the interface is a functional interface
+   i.e. it contains only a single abstract method (SAM)
+
+
+Function
+==========================
+   The java.util.function.Function<T, R> interface defines an abstract method named 'apply'
+   that takes an object of generic type T as input and returns an object of generic type R.
+
+
+Consumer
+===========================
+    Consumer - A functional interface that takes an input and produces no output.
+
+    The java.util.function.Consumer<T> interface defines an abstract method named
+    'accept' that takes an object of generic type T and returns no result (void).
+
+Predicate
+===========================
+
+    The java.util.function.Predicate<T> interface defines an abstract method named
+    'test' that accepts an object of generic type T and returns a boolean.

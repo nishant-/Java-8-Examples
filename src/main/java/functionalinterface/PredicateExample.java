@@ -1,24 +1,23 @@
-package lambdas;
+package functionalinterface;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
-public class Predicates {
 
-    //The java.util.function.Predicate<T> interface defines an abstract method named
-    //test that accepts an object of generic type T and returns a boolean.
+public class PredicateExample {
 
-    //Example
 
+
+    /**
+     * @author nishant
+     */
     public static <T> List<T> filter(List<T> list, Predicate<T> p) {
         List<T> results = new ArrayList<>();
         for (T t: list) {
-            if(p.test(t)) {
+            if(p.test(t)) { //SAM in Predicate is test
                 results.add(t);
             }
         }
