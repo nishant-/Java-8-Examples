@@ -2,4 +2,4 @@
 
 Easy to follow Java 8 examples.
 
-<More to come> 
+More to come...
