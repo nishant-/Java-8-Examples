@@ -1,4 +1,4 @@
-package functionalinterface;
+package functionalinterface.functions.consumer;
 
 import java.util.Arrays;
 import java.util.List;
